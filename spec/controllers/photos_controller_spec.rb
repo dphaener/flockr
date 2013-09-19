@@ -30,7 +30,7 @@ describe PhotosController do
   # PhotosController. Be sure to keep this updated too.
   let(:valid_session) { {} }
   
-  let(:user) { User.create!(email: 'test@test.com', username: 'test') }
+  let(:user) { User.create!(email: 'test@test.com', username: 'test', password: 'abc123', password_confirmation: 'abc123') }
 
   describe "GET index" do
     it "assigns all photos as @photos" do
