@@ -1,6 +1,8 @@
 Flockr::Application.routes.draw do
   root 'home#index'
   
+  get '/sign_up' => 'users#new'
+  
   resources :users do
     resources :photos
   end

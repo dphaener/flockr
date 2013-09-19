@@ -17,7 +17,7 @@ describe User do
   describe 'email' do
     context 'when not provided' do
       it 'fails validation' do
-        expect(User.new).to have(1).error_on(:email)
+        expect(User.new).to have(2).error_on(:email)
       end
     end
 
@@ -77,7 +77,37 @@ describe User do
 
       it { should_not be_valid }
     end
-
+    
+    context 'has length >= 6' do
+      before do
+        subject.password = 'abc12345'
+        subject.password_confirmation = 'abc12345'
+      end
+      it { should be_valid }
+    end
+    
+    context 'has length < 6' do
+      before do
+        subject.password = 'abc'
+        subject.password_confirmation = 'abc'
+      end
+      it { should_not be_valid }
+    end
+    
+    context 'has valid email format' do
+      before do
+        subject.email = 'abc@abc.com'
+      end
+      it { should be_valid }
+    end
+    
+    context 'has invalid email format' do
+      before do
+        subject.email = 'abc'
+      end
+      it { should_not be_valid }
+    end
+    
     context 'when valid' do
       it 'returns the user' do
         subject.save

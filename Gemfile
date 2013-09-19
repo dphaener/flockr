@@ -46,6 +46,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'capybara'
 end
+
+gem "bootstrap-sass", github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 
 
